@@ -4,6 +4,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm } from "react-hook-form";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
   const {
@@ -14,7 +15,24 @@ export default function Register() {
   } = useForm();
 
   function onSubmit(data) {
-    console.log(data.username);
+    // An object with user data
+    const user = {
+      name: data.username,
+      email: data.email,
+      password: data.password,
+    };
+
+    // Sending data from user to api
+    axios
+      .post("http://localhost:8000/api/user/create", user)
+      .then((response) => {
+        console.log(response.data);
+        // Reset form
+        reset();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     reset();
   }
   return (
@@ -36,16 +54,16 @@ export default function Register() {
                   placeholder="Type your username"
                   className="w-full pl-10 text-black placeholder-black-500 outline-none border-0 rounded-lg px-4 py-2 bg-transparent"
                   {...register("username", {
-                    required: " Please enter your username",pattern: {
-                        value:
-                          /^[a-zA-Z0-9]+$/,
-                        message: "No special character",
-                      },
+                    required: " Please enter your username",
+                    pattern: {
+                      value: /^[a-zA-Z0-9]+$/,
+                      message: "No special character",
+                    },
                   })}
                 />
               </div>
               {errors.username && (
-                <span class="text-red-500 absolute">
+                <span className="text-red-500 absolute">
                   {errors.username?.message}
                 </span>
               )}
@@ -65,17 +83,19 @@ export default function Register() {
                   placeholder="Type your password"
                   className="w-full pl-10 text-black placeholder-black-500 outline-none border-0 rounded-lg px-4 py-2 bg-transparent"
                   {...register("password", {
-                    required: "Please enter your password",pattern: {
-                        value:
-                          /^(.{6,})$/,
-                        message: "More than six characters please",
-                      },
+                    required: "Please enter your password",
+                    pattern: {
+                      value: /^(.{6,})$/,
+                      message: "More than six characters please",
+                    },
                   })}
                 />
               </div>
-            {errors.password && (
-              <span class="text-red-500 absolute">{errors.password?.message}</span>
-            )}
+              {errors.password && (
+                <span className="text-red-500 absolute">
+                  {errors.password?.message}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex flex-col pb-5">
@@ -100,7 +120,7 @@ export default function Register() {
               </div>
             </div>
             {errors.email && (
-              <span class="text-red-500">{errors.email?.message}</span>
+              <span className="text-red-500">{errors.email?.message}</span>
             )}
           </div>
           <Button
@@ -108,7 +128,9 @@ export default function Register() {
             value="Sign up"
             className="bg-[#0c1b33] w-[12.5em] rounded-lg px-4 py-2 font-bold hover:bg-blue-700 text-white mb-4"
           />
-          <span>LOGIN</span>
+          <Link to="/">
+            <span className="hover:bg-[#0c1b33] rounded-lg px-4 py-2 hover:text-white">LOGIN</span>
+          </Link>
         </form>
       </div>
     </>
