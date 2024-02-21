@@ -6,7 +6,7 @@ export function useData() {
   return data;
 }
 export function Provider({ children }) {
-  const [isAuthenticated, SetIsAuthenticated] = useState(true);
+  const [isAuthenticated, SetIsAuthenticated] = useState(false);
   const [showAllAgents, setShowAllAgents] = useState(false);
   const [showLeaveRequest, setShowLeaveRequest] = useState(false);
   const [showAcceptedRequest, setShowAcceptedRequest] = useState(false);
