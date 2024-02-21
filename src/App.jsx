@@ -7,11 +7,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import LoginUser from "./pages/loginUser";
 import Register from "./components/authentication/register";
-import Dashboard from "./components/dashboard/dashboard";
 import DashboardPage from "./pages/dashboardPage";
 import { useData } from "./hooks/useData";
-import Layout from "./components/layout";
-import AllAgents from "./pages/allAgents";
 
 function App() {
   const { isAuthenticated } = useData();

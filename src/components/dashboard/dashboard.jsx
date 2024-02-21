@@ -10,6 +10,7 @@ export default function Dashboard({children}) {
         <Header/>
         {children}
         </div>
+        
       </div>
     </>
   );

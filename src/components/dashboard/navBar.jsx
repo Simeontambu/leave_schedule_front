@@ -7,7 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { useData } from "../../hooks/useData";
 export default function Navbar() {
   const navigate = useNavigate();
-  const { setShowAllAgents, setshowLeaveRequest } = useData();
+  const {
+    setShowAllAgents,
+    setShowLeaveRequest,
+    setShowAcceptedRequest,
+    setShowOnLeave,
+  } = useData();
 
   return (
     <>
@@ -20,8 +25,9 @@ export default function Navbar() {
             <Link
               onClick={() => {
                 setShowAllAgents(false);
-                setshowLeaveRequest(true);
-
+                setShowOnLeave(false);
+                setShowAcceptedRequest(false);
+                setShowLeaveRequest(true);
                 navigate("/dashboard", { replace: true }); // Force le remplacement de l'historique
               }}
               className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2 "
@@ -34,7 +40,9 @@ export default function Navbar() {
             <Link
               to=""
               onClick={() => {
-                setshowLeaveRequest(false);
+                setShowLeaveRequest(false);
+                setShowLeaveRequest(false);
+                setShowOnLeave(false);
                 setShowAllAgents(true);
 
                 navigate("/dashboard", { replace: true }); // Force le remplacement de l'historique
@@ -42,17 +50,35 @@ export default function Navbar() {
               className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2"
             >
               <FaUsers size={60} />
-              <li className="text-xl pr-[1.8em]">All agents</li>
+              <li className="text-xl pr-[1.8em]">Add agents</li>
             </Link>
           </div>
           <div className="border-b-2">
-            <Link className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2">
+            <Link
+              onClick={() => {
+                setShowAllAgents(false);
+                setShowLeaveRequest(false);
+                setShowAcceptedRequest(false);
+                setShowOnLeave(true);
+                navigate("/dashboard", { replace: true }); // Force le remplacement de l'historique
+              }}
+              className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2"
+            >
               <FaCalendarMinus size={60} />
               <li className="text-xl">Agent on leave</li>
             </Link>
           </div>
           <div className="border-b-2">
-            <Link className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2">
+            <Link
+              onClick={() => {
+                setShowAllAgents(false);
+                setShowOnLeave(false);
+                setShowLeaveRequest(false);
+                setShowAcceptedRequest(true);
+                navigate("/dashboard", { replace: true }); // Force le remplacement de l'historique
+              }}
+              className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2"
+            >
               <RiPassValidFill size={60} />
               <li className="text-xl">Accepted leave</li>
             </Link>
