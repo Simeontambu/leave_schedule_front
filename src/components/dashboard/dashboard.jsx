@@ -1,12 +1,16 @@
+import Header from "./header";
 import Navbar from "./navBar";
 
-export default function Dashboard(){
-    return(
-        <>
-        <div>
-        <h1>Dashboard</h1>
-<Navbar/>
+export default function Dashboard({children}) {
+  return (
+    <>
+      <div className="flex">
+        <Navbar/>
+        <div className=" flex-1">
+        <Header/>
+        {children}
         </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }
