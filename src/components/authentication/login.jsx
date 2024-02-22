@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { isAuthenticated, SetIsAuthenticated } = useData();
+  const { isAuthenticated, SetIsAuthenticated, setIsLoggedIn } = useData();
 
   const {
     register,
@@ -18,7 +18,6 @@ export default function Login() {
     reset,
     formState: { errors },
   } = useForm();
-
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
@@ -27,11 +26,11 @@ export default function Login() {
       );
       console.log(response.data.status_code);
       if (response.data.status_code === 200) {
-        console.log("simeon");
-        localStorage.setItem("auth_token", response.data.token); // Example of insecure storage (use cookies or a better mechanism)
+        localStorage.setItem("auth_token", response.data.token);
+        
         SetIsAuthenticated(!isAuthenticated);
-
         navigate("/dashboard");
+        setIsLoggedIn(true);
         reset();
       } else {
         alert(response.data.status_message);
@@ -104,10 +103,13 @@ export default function Login() {
             className="bg-[#0c1b33] w-[12.5em] rounded-lg px-4 py-2 font-bold hover:bg-blue-700 text-white mb-4"
           />
           <Link to="/register">
-            <span className="hover:bg-[#0c1b33] rounded-lg px-4 py-2 hover:text-white">SIGN UP</span>
+            <span className="hover:bg-[#0c1b33] rounded-lg px-4 py-2 hover:text-white">
+              SIGN UP
+            </span>
           </Link>
         </form>
       </div>
     </>
   );
 }
+
