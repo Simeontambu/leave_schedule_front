@@ -12,7 +12,7 @@ export default function Header() {
         <div className="flex">
           <IoIosNotificationsOutline size={35} className="ml-20 " />
           {admin ? (
-            <span class=" bg-red-500 rounded-full p-1 text-1xs text-white">
+            <span className=" bg-red-500 rounded-full p-1 text-1xs text-white">
               {planningData.length}
             </span>
           ) : (

@@ -11,11 +11,8 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   const {
-    isAuthenticated,
     SetIsAuthenticated,
     setIsLoggedIn,
-    setUserData,
-    userData,
     setToken,
   } = useData();
 
@@ -31,7 +28,6 @@ export default function Login() {
         "http://localhost:8000/api/login",
         data
       );
-      console.log("user", response.data);
       if (response.data.status_code === 200) {
         //  localStorage.setItem("auth_token", response.data.token);
         setToken(response.data.token);
@@ -116,6 +112,7 @@ export default function Login() {
           </Link>
         </form>
       </div>
+      
     </>
   );
 }

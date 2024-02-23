@@ -1,7 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
-// import { headers } from "../utils/token";
-import { useNavigate } from "react-router-dom";
 
 const dataContexte = createContext();
 
@@ -22,6 +20,7 @@ export function Provider({ children }) {
   const [showOnLeave, setShowOnLeave] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [token, setToken] = useState();
+  const [isLogout, setIsLogout] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -55,8 +54,6 @@ export function Provider({ children }) {
     // localStorage.removeItem(auth_token);
   };
 
-console.log(alert);
-
   const value = {
     isAuthenticated,
     SetIsAuthenticated,
@@ -82,6 +79,8 @@ console.log(alert);
     disconnect,
     setToken,
     token,
+    isLogout,
+    setIsLogout,
   };
   return (
     <dataContexte.Provider value={value}>{children}</dataContexte.Provider>
