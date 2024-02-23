@@ -26,14 +26,15 @@ export default function Register() {
     axios
       .post("http://localhost:8000/api/user/create", user)
       .then((response) => {
-        console.log(response.data);
+        alert(response.data.message);
+
+        // setPlanningData([...planningData, response.data.leave])
         // Reset form
         reset();
       })
       .catch((error) => {
         console.error(error);
       });
-    reset();
   }
   return (
     <>
@@ -129,7 +130,9 @@ export default function Register() {
             className="bg-[#0c1b33] w-[12.5em] rounded-lg px-4 py-2 font-bold hover:bg-blue-700 text-white mb-4"
           />
           <Link to="/">
-            <span className="hover:bg-[#0c1b33] rounded-lg px-4 py-2 hover:text-white">LOGIN</span>
+            <span className="hover:bg-[#0c1b33] rounded-lg px-4 py-2 hover:text-white">
+              LOGIN
+            </span>
           </Link>
         </form>
       </div>

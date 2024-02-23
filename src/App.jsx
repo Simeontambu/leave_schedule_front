@@ -15,18 +15,16 @@ function App() {
   return (
     <>
       <Router>
-          <Routes>
-            <Route path="/" element={<LoginUser />} />
-            <Route path="/register" element={<Register />} />
-            <Route
-              path="/dashboard"
-              element={
-                isAuthenticated ? <DashboardPage /> : <Navigate to="/" replace />
-              }
-            />
-            {/* <Route path="/dashboard/agents" element={<AllAgents/>} /> */}
-          </Routes>
-        
+        <Routes>
+          <Route path="/" element={<LoginUser />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              isAuthenticated ? <DashboardPage /> : <Navigate to="/" replace />
+            }
+          />
+        </Routes>
       </Router>
     </>
   );

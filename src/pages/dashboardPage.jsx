@@ -4,9 +4,10 @@ import Dashboard from "../components/dashboard/dashboard";
 import { useData } from "../hooks/useData";
 import AllAgents from "../components/add agents/allAgents";
 import LeaveRequest from "../components/Leave request/leaveRequest";
+import AllAgent from "../components/all agent/allAgent";
 
 export default function DashboardPage() {
-  const { showAllAgents, showLeaveRequest, showOnLeave, showAcceptedRequest } =
+  const { showAllAgents, showLeaveRequest, showAcceptedRequest,showAgents } =
     useData();
   return (
     <>
@@ -14,7 +15,7 @@ export default function DashboardPage() {
         {showAllAgents && <AllAgents />}
         {showLeaveRequest && <LeaveRequest />}
         {showAcceptedRequest && <AcceptedLeave />}
-        {showOnLeave && <AgentOnLeave />}
+        {showAgents && <AllAgent />}
       </Dashboard>
     </>
   );

@@ -10,7 +10,14 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { isAuthenticated, SetIsAuthenticated, setIsLoggedIn } = useData();
+  const {
+    isAuthenticated,
+    SetIsAuthenticated,
+    setIsLoggedIn,
+    setUserData,
+    userData,
+    setToken,
+  } = useData();
 
   const {
     register,
@@ -24,13 +31,13 @@ export default function Login() {
         "http://localhost:8000/api/login",
         data
       );
-      console.log(response.data.status_code);
+      console.log("user", response.data);
       if (response.data.status_code === 200) {
-        localStorage.setItem("auth_token", response.data.token);
-        
-        SetIsAuthenticated(!isAuthenticated);
-        navigate("/dashboard");
+        //  localStorage.setItem("auth_token", response.data.token);
+        setToken(response.data.token);
+        SetIsAuthenticated(true);
         setIsLoggedIn(true);
+        navigate("/dashboard");
         reset();
       } else {
         alert(response.data.status_message);
@@ -112,4 +119,3 @@ export default function Login() {
     </>
   );
 }
-
