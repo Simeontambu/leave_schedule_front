@@ -4,7 +4,7 @@ import { useData } from "../../hooks/useData";
 import axios from "axios";
 
 export default function LeaveRequest() {
-  const {setPlanningData, planningData,token}= useData()
+  const { setPlanningData, planningData, token } = useData();
   const {
     register,
     handleSubmit,
@@ -21,16 +21,17 @@ export default function LeaveRequest() {
 
     // Sending data from user to api
     axios
-      .post("http://localhost:8000/api/conge/create", leave, { headers: { Authorization: `Bearer ${token}` } })
+      .post("http://localhost:8000/api/conge/create", leave, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
-        setPlanningData([...planningData, response.data.leave])
+        setPlanningData([...planningData, response.data.leave]);
         // Reset form
         reset();
       })
       .catch((error) => {
         console.error(error);
       });
-   
   };
 
   return (
