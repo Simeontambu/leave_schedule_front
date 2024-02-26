@@ -13,15 +13,20 @@ export default function AddAgent() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const leave = {
+    const agent = {
       nom: data.nom,
-      libelle: data.libelle,
-      libelle_motif: data.libelle_motif,
+      postnom: data.middle_name,
+      prenom: data.first_name,
+      adresse: data.address,
+      telephone: data.phone,
+      sexe: data.gender,
+      libelle: data.function,
+      libelle_direction: data.direction,
     };
-
+    console.log(agent);
     // Sending data from user to api
     axios
-      .post("http://localhost:8000/api/conge/create", leave, {
+      .post("http://localhost:8000/api/agents/create", agent, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
