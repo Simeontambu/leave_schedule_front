@@ -4,7 +4,7 @@ import Button from "../authentication/button";
 import axios from "axios";
 
 export default function AddAgent() {
-  const { token } = useData();
+  const { token, agents, setAgents } = useData();
   const {
     register,
     handleSubmit,
@@ -23,14 +23,14 @@ export default function AddAgent() {
       libelle: data.function,
       libelle_direction: data.direction,
     };
-    console.log(agent);
     // Sending data from user to api
     axios
       .post("http://localhost:8000/api/agents/create", agent, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setPlanningData([...planningData, response.data.leave]);
+        console.log(response);
+        setAgents([...agents, response.data.agent]);
         // Reset form
         reset();
       })
@@ -83,7 +83,7 @@ export default function AddAgent() {
                   {...register("middle_name", {
                     required: " Please enter your middle name",
                     pattern: {
-                      value: /^[a-zA-Z]+$/,
+                      value: /^[a-zA-Z\s]+$/,
                       message: "No bumeric & special character",
                     },
                   })}
@@ -108,7 +108,7 @@ export default function AddAgent() {
                   {...register("first_name", {
                     required: " Please enter your first name",
                     pattern: {
-                      value: /^[a-zA-Z]+$/,
+                      value: /^[a-zA-Z\s]+$/,
                       message: "No numeric & special character",
                     },
                   })}
@@ -131,7 +131,7 @@ export default function AddAgent() {
                   {...register("address", {
                     required: " Please enter your adress",
                     pattern: {
-                      value: /^[a-zA-Z0-9]+$/,
+                      value: /^[a-zA-Z0-9\s]+$/,
                       message: "No special character",
                     },
                   })}
@@ -177,7 +177,7 @@ export default function AddAgent() {
                   {...register("gender", {
                     required: " Please enter your gender",
                     pattern: {
-                      value: /^[a-zA-Z\s]+$/,
+                      value: /^[a-zA-Z]+$/,
                       message: "No special character",
                     },
                   })}

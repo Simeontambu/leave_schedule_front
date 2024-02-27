@@ -81,6 +81,7 @@ export function Provider({ children }) {
     token,
     isLogout,
     setIsLogout,
+    setAgents,
   };
   return (
     <dataContexte.Provider value={value}>{children}</dataContexte.Provider>
