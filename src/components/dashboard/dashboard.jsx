@@ -7,7 +7,7 @@ export default function Dashboard({ children }) {
     <>
       <div className="flex">
         <Navbar />
-        <div className=" flex-1">
+        <div className=" flex-1 ">
           <Header />
           {children}
         </div>

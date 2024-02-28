@@ -40,7 +40,7 @@ export default function AddAgent() {
   };
   return (
     <>
-      <div className="max-w-[70em] my-[5em] mx-auto bg-[#9dc3cc] min-h-[30em] rounded-lg">
+      <div className="max-w-[70em] my-[5em] mx-auto bg-[#9dc3cc] min-h-[30em] rounded-lg ">
         <h1 className="text-center text-3xl pt-4 font-bold">Add agent</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}

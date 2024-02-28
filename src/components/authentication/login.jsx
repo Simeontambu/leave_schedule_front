@@ -14,6 +14,7 @@ export default function Login() {
     SetIsAuthenticated,
     setIsLoggedIn,
     setToken,
+    token
   } = useData();
 
   const {
@@ -29,8 +30,8 @@ export default function Login() {
         data
       );
       if (response.data.status_code === 200) {
-        //  localStorage.setItem("auth_token", response.data.token);
         setToken(response.data.token);
+        
         SetIsAuthenticated(true);
         setIsLoggedIn(true);
         navigate("/dashboard");

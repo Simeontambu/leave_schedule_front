@@ -2,4 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as desired */
+  height: 5px; /* Adjust the height as desired */
+  background-color: #f5f5f5; /* Customize track color */
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: #9dc3cc; /* Customize thumb color */
+  border-radius: 5px; /* Add rounded corners */
+}
