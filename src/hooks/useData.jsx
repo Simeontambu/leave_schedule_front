@@ -11,7 +11,7 @@ export function Provider({ children }) {
   const [agents, setAgents] = useState([]);
   const [userData, setUserData] = useState({});
   const [planningData, setPlanningData] = useState({});
-  const [planning, setPlanning]=useState({})
+  const [planning, setPlanning] = useState({});
   const [isAuthenticated, SetIsAuthenticated] = useState(false);
   const [showAllAgents, setShowAllAgents] = useState(false);
   const [showAgents, setShowAgents] = useState(false);
@@ -22,7 +22,7 @@ export function Provider({ children }) {
   const [token, setToken] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLogout, setIsLogout] = useState(false);
-  
+
   useEffect(() => {
     if (isLoggedIn) {
       axios
@@ -40,12 +40,21 @@ export function Provider({ children }) {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ])
-        .then(([agentsResponse, userResponse, planningDataResponse, planningResponse]) => {
-          setAgents(agentsResponse.data);
-          setUserData(userResponse.data);
-          setPlanningData(planningDataResponse.data);
-          setPlanning(planningResponse.data)
-        })
+        .then(
+          ([
+            agentsResponse,
+            userResponse,
+            planningDataResponse,
+            planningResponse,
+          ]) => {
+            setAgents(agentsResponse.data);
+            setUserData(userResponse.data);
+            setPlanningData(planningDataResponse.data);
+
+            setPlanning(planningResponse.data);
+           
+          }
+        )
         .catch((error) => {
           console.log(error);
         });
@@ -56,7 +65,7 @@ export function Provider({ children }) {
     setUserData({});
     setIsLoggedIn(false);
     setToken();
-    // localStorage.removeItem(auth_token);
+    localStorage.removeItem("fsddffd");
   };
 
   const value = {
@@ -87,7 +96,7 @@ export function Provider({ children }) {
     isLogout,
     setIsLogout,
     setAgents,
-    planning
+    planning,setPlanning
   };
   return (
     <dataContexte.Provider value={value}>{children}</dataContexte.Provider>

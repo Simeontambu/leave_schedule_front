@@ -6,7 +6,7 @@ export default function AllAgent() {
   const { agents, searchText } = useData();
   return (
     <>
-      <div className="overflow-y-scroll h-[31.25em]">
+      <div className="overflow-y-scroll h-[31.25em] my-[5em]">
         <div className="flex justify-center flex-wrap gap-4 ">
           {agents
             .filter((agent) =>

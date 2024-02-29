@@ -1,4 +1,3 @@
-import { useData } from "../../hooks/useData";
 import Header from "./header";
 import Navbar from "./navBar";
 

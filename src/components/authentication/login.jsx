@@ -10,12 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const {
-    SetIsAuthenticated,
-    setIsLoggedIn,
-    setToken,
-    token
-  } = useData();
+  const { SetIsAuthenticated, setIsLoggedIn, setToken, token } = useData();
 
   const {
     register,
@@ -31,7 +26,6 @@ export default function Login() {
       );
       if (response.data.status_code === 200) {
         setToken(response.data.token);
-        
         SetIsAuthenticated(true);
         setIsLoggedIn(true);
         navigate("/dashboard");
@@ -113,7 +107,6 @@ export default function Login() {
           </Link>
         </form>
       </div>
-      
     </>
   );
 }

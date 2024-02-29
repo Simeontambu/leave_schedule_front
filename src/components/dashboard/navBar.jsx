@@ -38,7 +38,8 @@ export default function Navbar() {
                     setShowLeaveRequest(true);
                     navigate("/dashboard", { replace: true }); // Force le remplacement de l'historique
                   }}
-                  className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2 "
+                  id="button-1"
+                  className="flex items-center gap-2 hover:bg-blue-200 rounded-lg p-2"
                 >
                   <CiSquareQuestion size={60} />
                   <li className="text-xl">Leave request</li>
@@ -49,7 +50,7 @@ export default function Navbar() {
                   to=""
                   onClick={() => {
                     setShowLeaveRequest(false);
-                    setShowLeaveRequest(false);
+                    setShowAcceptedRequest(false);
                     setShowOnLeave(false);
                     setShowAllAgents(false);
                     setShowAgents(true);
@@ -119,7 +120,7 @@ export default function Navbar() {
                 <Link
                   to=""
                   onClick={() => {
-                    setShowLeaveRequest(false);
+                    setShowAcceptedRequest(false);
                     setShowLeaveRequest(false);
                     setShowOnLeave(false);
                     setShowAllAgents(false);
